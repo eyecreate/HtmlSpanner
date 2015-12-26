@@ -33,8 +33,11 @@ public class StyledTextHandler extends TagNodeHandler {
 
     @Override
     public void beforeChildren(TagNode node, SpannableStringBuilder builder, SpanStack spanStack) {
-
         Style useStyle = spanStack.getStyle( node, getStyle() );
+        beforeChildren(node, builder, useStyle, spanStack);
+    }
+
+    public void beforeChildren(TagNode node, SpannableStringBuilder builder, Style useStyle, SpanStack spanStack) {
 
         if (builder.length() > 0 &&  useStyle.getDisplayStyle() == Style.DisplayStyle.BLOCK ) {
 
@@ -53,14 +56,14 @@ public class StyledTextHandler extends TagNodeHandler {
                 if ( styleValue.getIntValue() > 0 ) {
                     if ( appendNewLine(builder) ) {
                         spanStack.pushSpan( new VerticalMarginSpan( styleValue.getIntValue() ),
-                            builder.length() -1, builder.length() );
+                                builder.length() -1, builder.length() );
                     }
                 }
             } else {
                 if ( styleValue.getFloatValue() > 0f ) {
                     if ( appendNewLine(builder) ) {
                         spanStack.pushSpan( new VerticalMarginSpan( styleValue.getFloatValue() ),
-                            builder.length() -1, builder.length() );
+                                builder.length() -1, builder.length() );
                     }
                 }
             }
@@ -70,6 +73,7 @@ public class StyledTextHandler extends TagNodeHandler {
 
     }
 
+    @Override
     public final void handleTagNode(TagNode node, SpannableStringBuilder builder,
                                     int start, int end, SpanStack spanStack) {
         Style styleFromCSS = spanStack.getStyle( node, getStyle() );

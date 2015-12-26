@@ -17,6 +17,19 @@ public class StyleAttributeHandler extends WrappingStyleHandler  {
         super(wrapHandler);
     }
 
+    @Override
+    public void beforeChildren(TagNode node, SpannableStringBuilder builder, Style useStyle, SpanStack spanStack) {
+
+        String styleAttr = node.getAttributeByName("style");
+
+        if ( getSpanner().isAllowStyling() && styleAttr != null ) {
+            super.beforeChildren(node, builder,
+                    parseStyleFromAttribute(useStyle, styleAttr),
+                    spanStack);
+        } else {
+            super.beforeChildren(node, builder, useStyle, spanStack);
+        }
+    }
 
     @Override
     public void handleTagNode(TagNode node, SpannableStringBuilder builder, int start, int end, Style useStyle,
