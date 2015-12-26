@@ -20,7 +20,7 @@ public class SpanStack {
 
     private Stack<SpanCallback> spanItemStack = new Stack<SpanCallback>();
 
-    private Set<CompiledRule> rules = new HashSet<CompiledRule>();
+    private List<CompiledRule> rules = new LinkedList<CompiledRule>();
 
     private Map<TagNode, List<CompiledRule>> lookupCache = new HashMap<TagNode, List<CompiledRule>>();
 
