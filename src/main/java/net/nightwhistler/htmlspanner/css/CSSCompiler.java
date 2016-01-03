@@ -446,6 +446,20 @@ public class CSSCompiler {
             }
         }
 
+        if ( "border-collapse".equals( key ) ) {
+            try {
+                final Style.BorderCollapse borderCollapse = Style.BorderCollapse.valueOf(value.toUpperCase());
+                return new StyleUpdater() {
+                    @Override
+                    public Style updateStyle(Style style, HtmlSpanner spanner) {
+                        return style.setBorderCollapse( borderCollapse );
+                    }
+                };
+            } catch (IllegalArgumentException ia) {
+                Log.e("CSSCompiler", "Could not parse border-collapse " + value );
+                return null;
+            }
+        }
 
         if ( "border".equals( key ) ) {
            return parseBorder( value );

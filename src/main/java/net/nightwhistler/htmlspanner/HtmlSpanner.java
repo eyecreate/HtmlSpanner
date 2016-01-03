@@ -28,6 +28,7 @@ import net.nightwhistler.htmlspanner.handlers.attributes.AlignmentAttributeHandl
 
 import net.nightwhistler.htmlspanner.handlers.attributes.BorderAttributeHandler;
 import net.nightwhistler.htmlspanner.handlers.attributes.StyleAttributeHandler;
+import net.nightwhistler.htmlspanner.handlers.table.TableHandler;
 import net.nightwhistler.htmlspanner.style.Style;
 import net.nightwhistler.htmlspanner.handlers.StyledTextHandler;
 import net.nightwhistler.htmlspanner.style.StyleValue;
@@ -435,6 +436,8 @@ public class HtmlSpanner {
         registerHandler("img", new ImageHandler());
 
         registerHandler("font", new FontHandler() );
+
+        registerHandler("table", new TableHandler() );
 
     }
 
