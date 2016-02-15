@@ -313,7 +313,7 @@ public class HtmlSpanner {
         }
     }
 
-    private void applySpan(SpannableStringBuilder builder, TagNode node, SpanStack stack,
+    protected void applySpan(SpannableStringBuilder builder, TagNode node, SpanStack stack,
                            CancellationCallback cancellationCallback) {
 
         checkForCancellation(cancellationCallback);
