@@ -11,14 +11,12 @@ apply plugin: 'android-library'
 
 repositories {
     mavenCentral()
-    maven {
-        url "http://repo.pageturner-reader.org"
-    }
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
     compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.16'
-    compile 'com.osbcp.cssparser:cssparser:1.5'
+    compile 'com.github.raisercostin:osbcp-css-parser:cssparser-1.7'
 }
 
 android {
